@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    ports:
+      - "${HOST_PORT:-8080}:${PORT:-8000}"
+    environment:
+      - GREETING=hi
+      - PORT=${PORT:-8000}
+      - STORAGE=sqlite
+      - DATA_FILE=/data/counter.db
+    volumes:
+      - counter_data:/data
+volumes:
+  counter_data:
